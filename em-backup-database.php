@@ -6,14 +6,16 @@ $pathOfData = "/home/web/data";
 
 $enviroments = array('dev', 'test', 'staging', 'live');
 
-foreach($enviroments as $item) {
-	// Create folder for stucture
-	createBackupStructure($date, $folderBackup);
+// Create folder for stucture
+createBackupStructure($date, $folderBackup);
 
-	// Backup Database
-	dumpSQL($item.".em.traveldreams.vn", 
-		$item.".em.traveldreams.vn_".$date, 
-		$folderBackup."/".$date.'/database');
+foreach($enviroments as $item) {	
+	if($item != "test") {
+		// Backup Database
+		dumpSQL($item.".em.traveldreams.vn", 
+			$item.".em.traveldreams.vn_".$date, 
+			$folderBackup."/".$date.'/database');
+	}
 
 	// Backup Data
 	zipData($pathOfData.'/'.$item.'.em.traveldreams.vn', 
@@ -24,6 +26,8 @@ foreach($enviroments as $item) {
 * Create structure for backup
 */
 function createBackupStructure($name, $path) {
+	exec("rm -rf ".$path.'/'.$name);
+
 	if(!is_dir($path.'/'.$name)) {
 		mkdir($path.'/'.$name);
 

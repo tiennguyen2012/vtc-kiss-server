@@ -1,5 +1,5 @@
 <?php
-include "/home/account.php"
+include "/home/account.php";
 $date = date('Y-m-d');
 $folderBackup = "/home/backup/em.traveldreams.vn";
 $pathOfData = "/home/web/data";

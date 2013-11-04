@@ -1,5 +1,5 @@
 <?php
-$date = date('y-m-d');
+$date = date('Y-m-d');
 $folderBackup = "/home/backup/em.traveldreams.vn";
 $pathOfData = "/home/web/data";
 
@@ -44,5 +44,5 @@ function zipData($path, $direction) {
 * DumpSQL
 */
 function dumpSQL($databaseName, $newDatabaseName, $path) {
-	exec("mysqldump -h localhost -u root -p  ".$databaseName.".sql > ".$path."/".$newDatabaseName.".sql");
+	exec("mysqldump -h localhost -u root -p  ".$databaseName." > ".$path."/".$newDatabaseName.".sql");
 }

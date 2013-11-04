@@ -47,6 +47,6 @@ function zipData($path, $direction) {
 function dumpSQL($databaseName, $newDatabaseName, $path) {
 	global $database_username;
 	global $database_password;
-	exec("mysqldump -h localhost -u ".$database_username." -p".$database_username." ".
+	@exec("mysqldump -h localhost -u ".$database_username." -p".$database_password." ".
 		$databaseName." > ".$path."/".$newDatabaseName.".sql");
 }
